@@ -29,10 +29,10 @@ export const fetchPlugin = (inputCode: string) => {
             const { data, request } = await axios.get(args.path);
             const escaped = data.replace(/\n/g, '').replace(/"/g, '\\"').replace(/'/g, "\\'");
             const contents = 
-                `
-                    const style = document.createElement('style');
-                    style.innerText = '${escaped}';
-                    document.head.appendChild(style);
+                ` 
+                  const style = document.createElement('style');
+                  style.innerText = '${escaped}';
+                  document.head.appendChild(style);
                 `;
 
             const result: esbuild.OnLoadResult = {
